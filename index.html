@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="ISO 8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple CRUD</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center card-header">CRUD COM BOOTSTRAP, PHP, BANCO DE DADOS E AJAX</h2>
+        <div class="row">
+            <div class="resp col"></div> <!-- As mensagens de erro/sucesso aparecerão aqui -->
+        </div>
+        <div class="formulario">
+            <form action="" id="form" class="form-group">
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label">Nome</label>
+                        <input type="text" name="nome" id="nome" class="form-control"
+                            placeholder="Digite o seu nome...">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" id="email" class="form-control"
+                            placeholder="Digite o seu email...">
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    <div class="col">
+                        <label for="Estado" class="form-label">Estado</label>
+                        <select name="estado" id="estado" class="form-control">
+                            <option value="Distrito Federal">Distrito Federal</option>
+                            <option value="Goiás">Goiás</option>
+                            <option value="Mato Grosso">Mato Grosso</option>
+                            <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                            <option value="Alagoas">Alagoas</option>
+                            <option value="Bahia">Bahia</option>
+                            <option value="Ceará">Ceará</option>
+                            <option value="Maranhão">Maranhão</option>
+                            <option value="Paraíba">Paraíba</option>
+                            <option value="Pernambuco">Pernambuco</option>
+                            <option value="Piauí">Piauí</option>
+                            <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                            <option value="Sergipe">Sergipe</option>
+                            <option value="Acre">Acre</option>
+                            <option value="Amapá">Amapá</option>
+                            <option value="Amazonas">Amazonas</option>
+                            <option value="Pará">Pará</option>
+                            <option value="Rondônia">Rondônia</option>
+                            <option value="Roraima">Roraima</option>
+                            <option value="Tocantins">Tocantins</option>
+                            <option value="Espírito Santo">Espírito Santo</option>
+                            <option value="Minas Gerais">Minas Gerais</option>
+                            <option value="Rio de Janeiro">Rio de Janeiro</option>
+                            <option value="São Paulo">São Paulo</option>
+                            <option value="Paraná">Paraná</option>
+                            <option value="Santa Catarina">Santa Catarina</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="" class="form-label">CPF</label>
+                        <input type="text" name="cpf" id="cpf" class="form-control" placeholder="Número da identidade">
+                        <!-- <input type="text"> input="text":Esta é a tag de entrada principal. O atributo type="text" especifica que é um campo para inserir
+                        texto.
+                        
+                        name="cpf": O atributo name é usado para identificar o campo de dados quando os dados do formulário são enviados. Neste
+                        caso, o nome do campo é "cpf", que pode indicar que é destinado à inserção de um CPF (Cadastro de Pessoa Física, um
+                        documento de identificação brasileiro).
+                        
+                        id="": O atributo id fornece um identificador único para o elemento HTML. Neste caso, está vazio, o que não é ideal.
+                        Normalmente, você colocaria um identificador aqui para referenciar o elemento com CSS ou JavaScript.
+                        
+                        class="form-control": O atributo class é usado para aplicar estilos CSS ao elemento. "form-control" é uma classe comum
+                        em frameworks como Bootstrap, que estiliza o campo de entrada para se ajustar bem em formulários.
+                        
+                        placeholder="Número da identidade": O atributo placeholder fornece um texto de sugestão ou orientação dentro do campo de
+                        entrada antes que o usuário comece a digitar. Neste caso, sugere que o usuário insira o "Número da identidade". -->
+                    </div>
+                </div>
+                <div class="row pt-4">
+                    <div class="col-md-4 offset-md-4">
+                        <input type="submit" value="Enviar" id="Enviar" class="btn btn-success w-100">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="titulo card-header mt-3">
+            <h2 class="text-center">Cidadãos Cadastrados</h2>
+        </div>
+
+        <table class="table"> <!--table: Esta é a tag principal que define a tabela. Todo o conteúdo da tabela, incluindo linhas, cabeçalhos e células, será
+        colocado dentro desta tag. -->
+            <thead> <!--<thead>: Significa "table head" e é usado para agrupar o conteúdo do cabeçalho da tabela-->
+                <th>Nome</th>
+                <!--<th>: Significa "table header cell" e é usado para definir uma célula de cabeçalho em uma tabela. As células <th> são normalmente usadas dentro de <thead> para representar os cabeçalhos das colunas, mas podem ser usadas em qualquer lugar para indicar a importância dos dados. O texto dentro de <th> é normalmente exibido em negrito e centralizado por padrão.-->
+                <th>Email</th>
+                <th>Estado</th>
+                <th>CPF</th>
+                <th colspan="2">Opções</th>
+            </thead>
+            <tbody class="TB">
+                <!--<tbody>: Significa "table body" e é usado para agrupar o conteúdo principal da tabela, ou seja, todas as linhas que contêm os dados, exceto o cabeçalho. Uma tabela pode ter vários elementos <tbody>, cada um representando um grupo lógico de linhas.-->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        $(document).ready(function () {//quando o documento estiver pronto faça essa função
+            $(document).on('submit', '#form', function (e) { //evitar a função padrao do form que é recarregar para outra pagina
+                e.preventDefault();//nao atualizar a pagina
+                $.ajax({
+                    url: 'ajax/cadastrar.php', // Certifique-se de que essa URL está correta.
+                    type: 'POST',
+                    data: new FormData(this),
+                    contentType: false,
+                    processData: false,
+                    cache: false,
+                    success: function(data){
+                        console.log(data);
+                    },
+                }).done(function (data) {
+                    // Aqui você insere a resposta na página
+                    $(".resp").html(data); // Assumindo que você tem um elemento com a classe .resp para receber a mensagem
+                });
+            });
+            function crudIsadora() {
+                $.ajax({
+                    url: 'ajax/select.php', // Certifique-se de que essa URL está correta.
+                    method: 'GET',
+                }).done(function (data) {
+                    // Aqui você insere a resposta na página
+                    $(".TB").html(data); // Assumindo que você tem um elemento com a classe .resp para receber a mensagem
+                })
+
+            }
+            setInterval(crudIsadora, 1000);
+
+            // script para editar
+            $(document).on('click', '.edit', function (e) { //ao clicar no botao editar
+                e.preventDefault();
+                console.log('djjdjdjkdjdjdk')
+                var id = $(this).attr("id")// pegara o conteudo do id
+                $.ajax({
+                    url: 'ajax/select.php', // Certifique-se de que essa URL está correta.
+                    method: 'POST',
+                    data: {
+                        id: id
+                    }
+                }).done(function (data) {
+                    // Aqui você insere a resposta na página
+                    $(".formulario").html(data); // Assumindo que você tem um elemento com a classe .resp para receber a mensagem
+                })
+            })
+            // script para deletar
+            $(document).on('click', '.deletar', function (e) { //ao clicar no botao editar
+                e.preventDefault();
+                var deletar = $(this).attr("id")// pegara o conteudo do id
+                $.ajax({
+                    url: 'ajax/select.php', // Certifique-se de que essa URL está correta.
+                    method: 'POST',
+                    data: {
+                        deletar: deletar
+                    }
+                }).done(function (data) {
+                    // Aqui você insere a resposta na página
+                    $(".resp").html(data); // Assumindo que você tem um elemento com a classe .resp para receber a mensagem
+                })
+            })
+
+            //script para atualizar os dados
+             $(document).on('submit', '#update', function (e) { //evitar a função padrao do form que é recarregar para outra pagina
+                e.preventDefault();//nao atualizar a pagina
+                $.ajax({
+                    url: 'ajax/cadastrar.php', // Certifique-se de que essa URL está correta.
+                    type: 'POST',
+                    data: new FormData(this),
+                    contentType: false,
+                    processData: false,
+                    cache: false
+                }).done(function (data) {
+                    // Aqui você insere a resposta na página
+                    $(".resp").html(data); // Assumindo que você tem um elemento com a classe .resp para receber a mensagem
+                });
+            });
+        })
+    </script>
+</body>
+
+</html>
